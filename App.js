@@ -1,9 +1,11 @@
 import * as WebBrowser from 'expo-web-browser';
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef, useState } from 'react';
-import {SafeAreaView, View, Text, Image, Button, Alert, DrawerLayoutAndroid,ScrollView} from 'react-native';
+import {SafeAreaView, View, Text, Image, Button, Alert, DrawerLayoutAndroid,ScrollView, TouchableOpacity} from 'react-native';
+import { MaterialCommunityIcons, FontAwesomes, MaterialIcons} from '@expo/vector-icons';
+
 import RN from 'react-native-rasa';
-const hostAccess = 'http://53a9c736e2c2.ngrok.io'; //from ngrok or SSH
+const hostAccess = 'http://574f09d4b754.ngrok.io'; //from ngrok or SSH
 const hostNote = 'http://75f3212808d5.ngrok.io/Application/Chatbot/contentNote.html';// Ip Localhost on the domain Chatbot && hostNote
 const styleImg = {
   padding: 5 ,
@@ -60,70 +62,62 @@ const styleCopy={
     backgroundColor: '#CEE3F6',
     color: '#CEE3F6'
 };
+
+
 const navigationView = () => (
   <ScrollView style={styleScrollView}>
       <Text></Text>
       <Button title="Hạn chế"/>
       <Text style={textScrollView}>
-      <Text style={styleTextG}>[ * ] Nội dung chatbot truy cập với các câu hỏi được thiết lập sẵn{"\n"}</Text>
-      <Text style={styleTextH}>
-        {'    '}- Báo cáo tháng {'1 - 8'} : Là báo cáo năm 2020.{"\n"}
-        {'    '}- Cơ sở dữ liệu bị hạn chế.{"\n"}
-      </Text> 
-      <Text style={styleTextG}>[ * ] Các câu hỏi có thể truy xuất với bot:{"\n"}</Text>
-      <Text style={styleTextG}>{'  '}!~ Báo cáo tháng trong năm 2020{"\n"}</Text>
-      <Text style={styleTextH}>{'    '}- Cho xem báo cáo tháng 1{"\n"}
-      {'    '}- Báo cáo tháng 1{"\n"}
-      {'    '}- Cho xem báo cáo tháng 2{"\n"}
-      {'    '}- Báo cáo tháng 2{"\n"}
-      {'    '}- Cho xem báo cáo tháng 3{"\n"}
-      {'    '}- Báo cáo tháng 3{"\n"}
-      {'    '}- Cho xem báo cáo tháng 4{"\n"}
-      {'    '}- Báo cáo tháng 4{"\n"}
-      {'    '}- Cho xem báo cáo tháng 5{"\n"}
-      {'    '}- Báo cáo tháng 5{"\n"}
-      {'    '}- Cho xem báo cáo tháng 6{"\n"}
-      {'    '}- Báo cáo tháng 6{"\n"}
-      {'    '}- Cho xem báo cáo tháng 7{"\n"}
-      {'    '}- Báo cáo tháng 7 {"\n"}
-      {'    '}- Cho xem báo cáo tháng 8{"\n"}
-      {'    '}- Báo cáo tháng 8{"\n"}</Text>
-
-      <Text style={styleTextG}>{'  '}!~ Báo cáo quý năm 2019 {'&'} 2020{"\n"}</Text>
-      <Text style={styleTextH}>{'    '}- Báo cáo quý 1 năm 2019{"\n"}
-      {'    '}- Báo cáo quý 2 năm 2019{"\n"}
-      {'    '}- Báo cáo quý 3 năm 2019{"\n"}
-      {'    '}- Báo cáo quý 4 năm 2019{"\n"}
-      {'    '}- Báo cáo quý 1 năm 2020{"\n"}
-      {'    '}- Báo cáo quý 2 năm 2020{"\n"}
-      {'    '}- Báo cáo quý 3 năm 2020{"\n"}
-      {'    '}- Báo cáo quý 4 năm 2020{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 1 năm 2020{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 2 năm 2020{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 3 năm 2020{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 4 năm 2020{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 1 năm 2019{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 2 năm 2019{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 3 năm 2019{"\n"}
-      {'    '}- Đưa tôi xem báo cáo quý 4 năm 2019{"\n"}
-      </Text>
-      <Text style={styleTextG}>
-        {'  '}!~Báo cáo các năm{"\n"}
-      </Text>
-      <Text style={styleTextH}>
-      {'    '}- Báo cáo năm 2015{"\n"}
-      {'    '}- Cho tôi xem báo cáo năm 2016{"\n"}
-      {'    '}- Báo cáo năm 2016{"\n"}
-      {'    '}- Cho tôi xem báo cáo năm 2017{"\n"}
-      {'    '}- Báo cáo năm 2017{"\n"}
-      {'    '}- Cho tôi xem báo cáo năm 2018{"\n"}
-      {'    '}- Báo cáo năm 2018{"\n"}
-      {'    '}- Cho tôi xem báo cáo năm 2019{"\n"}
-      {'    '}- Báo cáo năm 2019{"\n"}
-      {'    '}- Cho tôi xem báo cáo năm 2020{"\n"}
-      {'    '}- Báo cáo năm 2020{"\n"}
-      </Text>
-      </Text>
+      <Text style={styleTextG}>[ * ] Cơ sở dữ liệu bị hạn chế. {"\n"}</Text>
+      <Text style={styleTextG}>[ * ] Bot hỗ trợ truy xuất các báo cáo:{"\n"}</Text>
+      <Text style={styleTextG}>{'  '}!~ Báo cáo các tháng {"\n"}</Text>
+        <Text style={styleTextH}>
+        {'    '}- Tháng 1 {"\n"}
+        {'    '}- Tháng 2 {"\n"}
+        {'    '}- Tháng 3 {"\n"}
+        {'    '}- Tháng 4 {"\n"}
+        {'    '}- Tháng 5 {"\n"}
+        {'    '}- Tháng 6 {"\n"}
+        {'    '}- Tháng 7 {"\n"}
+        {'    '}- Tháng 8 {"\n"}
+        {'    '}- Tháng 9 {"\n"}
+        {'    '}- Tháng 10 {"\n"}
+        {'    '}- Tháng 11 {"\n"}
+        {'    '}- Tháng 12 {"\n"}
+        </Text>
+      <Text style={styleTextG}>{'  '}!~ Báo cáo các quý {"\n"}</Text>
+        <Text style={styleTextH}>
+        {'    '}- Quý 1 {"\n"}
+        {'    '}- Quý 2 {"\n"}
+        {'    '}- Quý 3 {"\n"}
+        {'    '}- Quý 4 {"\n"}
+        </Text>
+      <Text style={styleTextG}>{'  '}!~Báo cáo các năm{"\n"}</Text>
+        <Text style={styleTextH}>{'    '}- 2019 {"\n"}
+        {'    '}- 2020 {"\n"}
+        {'    '}- 2021 {"\n"}
+        </Text>
+      <Text style={styleTextG}>[ * ] Gợi ý các câu truy vấn:{"\n"}</Text>
+      <Text style={styleTextG}>{'  '}!~ Báo cáo tháng {"\n"}</Text>
+        <Text style={styleTextH}>
+        {'    '}- Cho xem báo cáo tháng 1 {"\n"}
+        {'    '}{'    '}+  Năm 2020 {"\n"}
+        {'    '}- Cho xem báo cáo tháng 1 năm 2019 {"\n"} 
+        {'    '}... {"\n"} 
+        </Text>
+      <Text style={styleTextG}>{'  '}!~ Báo cáo quý {"\n"}</Text>
+        <Text style={styleTextH}>
+        {'    '}- Cho xem báo cáo quý 1 năm 2020 {"\n"}
+        {'    '}- Cho xem báo cáo quý 2 năm 2021 {"\n"}
+        {'    '}... {"\n"} 
+        </Text>
+      <Text style={styleTextG}>{'  '}!~ Báo cáo năm {"\n"}</Text>
+        <Text style={styleTextH}>
+        {'    '}- Cho xem báo cáo năm 2020 {"\n"}
+        {'    '}- Cho xem báo cáo năm 2021 {"\n"}</Text>
+        {'    '}... {"\n"} 
+        </Text>
       <View style={styleTextF}>
         <Text style={Please}>---Xin lỗi vì sự bất tiện này---</Text>
       </View>
@@ -155,9 +149,9 @@ export default function App() {
      <View style={styleView} >
      
     <Image style={styleImg} source={require('./assets/chat.png')}  />
-      <Text style={styleText} >Mình là Bot hỗ trợ truy xuất báo cáo!
+      <Text style={styleText} >Em là Bot hỗ trợ truy xuất báo cáo!
       </Text>
-      <Text style={styleText} > Bạn có muốn xuất báo cáo?</Text>
+      <Text style={styleText} > Anh/chị có muốn xuất báo cáo?</Text>
       {/* <Button title="Note Content" onPress={() =>changeVisibilityStatus() }/> */}
     </View> 
 
@@ -168,6 +162,7 @@ export default function App() {
         emptyResponseMessage="Sorry, I don't understand"
         onEmptyResponse={() => console.log('Handle with your custom action')}
       />
+      
     </SafeAreaView>
     </DrawerLayoutAndroid>
   </>
