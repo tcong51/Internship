@@ -1,0 +1,38 @@
+version: "2.0"
+
+stories:
+
+- story: step1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: report_month
+  - action: action_report_month
+  - intent: report_quarter
+  - action: action_report_quarter
+  - intent: report_year
+  - action: action_report_year
+
+- story: step2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: report_month_M
+  - action: utter_ask_year_of_report_month
+  - intent: report_month_Y
+  - action: action_report_month
+
+- story: step3
+  steps:
+  - intent: report_month
+  - action: action_report_month
+
+- story: step4
+  steps:
+  - intent: report_quarter
+  - action: action_report_quarter
+
+- story: step5
+  steps:
+  - intent: report_year
+  - action: action_report_year

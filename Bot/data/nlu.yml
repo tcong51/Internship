@@ -1,0 +1,124 @@
+version: "2.0"
+
+nlu:
+- intent: report_month_M
+  examples: |
+    - Cho xem báo cáo tháng [1](month)
+    - Cho xem báo cáo tháng [2](month)
+    - Cho xem báo cáo tháng [3](month)
+    - Cho xem báo cáo tháng [4](month)
+    - Cho xem báo cáo tháng [5](month)
+    - Cho xem báo cáo tháng [6](month)
+    - Cho xem báo cáo tháng [7](month)
+    - Cho xem báo cáo tháng [8](month)
+    - Cho xem báo cáo tháng [9](month)
+    - Cho xem báo cáo tháng [10](month)
+    - Cho xem báo cáo tháng [11](month)
+    - Cho xem báo cáo tháng [12](month)
+- intent: report_month_Y
+  examples: |
+    - Năm [2019](month_year)
+    - Năm [2020](month_year)
+    - Năm [2021](month_year)
+- intent: report_month
+  examples: |
+    - Cho xem báo cáo tháng [1](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [2](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [3](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [4](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [5](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [6](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [7](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [8](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [9](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [10](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [11](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [12](month) năm [2019](month_year)
+    - Cho xem báo cáo tháng [1](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [2](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [3](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [4](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [5](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [6](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [7](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [8](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [9](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [10](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [11](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [12](month) năm [2020](month_year)
+    - Cho xem báo cáo tháng [1](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [2](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [3](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [4](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [5](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [6](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [7](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [8](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [9](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [10](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [11](month) năm [2021](month_year)
+    - Cho xem báo cáo tháng [12](month) năm [2021](month_year)
+- intent: report_quarter
+  examples: |
+    - Cho xem báo cáo quý [1](quarter) năm [2019](quarter_year)
+    - Cho xem báo cáo quý [2](quarter) năm [2019](quarter_year)
+    - Cho xem báo cáo quý [3](quarter) năm [2019](quarter_year)
+    - Cho xem báo cáo quý [4](quarter) năm [2019](quarter_year)
+    - Cho xem báo cáo quý [1](quarter) năm [2020](quarter_year)
+    - Cho xem báo cáo quý [2](quarter) năm [2020](quarter_year)
+    - Cho xem báo cáo quý [3](quarter) năm [2020](quarter_year)
+    - Cho xem báo cáo quý [4](quarter) năm [2020](quarter_year)
+    - Cho xem báo cáo quý [1](quarter) năm [2021](quarter_year)
+    - Cho xem báo cáo quý [2](quarter) năm [2021](quarter_year)
+    - Cho xem báo cáo quý [3](quarter) năm [2021](quarter_year)
+    - Cho xem báo cáo quý [4](quarter) năm [2021](quarter_year)
+- intent: report_year
+  examples: |
+    - Cho xem báo cáo năm [2019](year)
+    - Cho xem báo cáo năm [2019](year)
+    - Cho xem báo cáo năm [2019](year)
+    - Cho xem báo cáo năm [2019](year)
+    - Cho xem báo cáo năm [2020](year)
+    - Cho xem báo cáo năm [2020](year)
+    - Cho xem báo cáo năm [2020](year)
+    - Cho xem báo cáo năm [2020](year)
+    - Cho xem báo cáo năm [2021](year)
+    - Cho xem báo cáo năm [2021](year)
+    - Cho xem báo cáo năm [2021](year)
+    - Cho xem báo cáo năm [2021](year)
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
