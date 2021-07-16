@@ -5,7 +5,7 @@ import {SafeAreaView, View, Text, Image, Button, Alert, DrawerLayoutAndroid,Scro
 import { MaterialCommunityIcons, FontAwesomes, MaterialIcons} from '@expo/vector-icons';
 
 import RN from 'react-native-rasa';
-const hostAccess = 'http://574f09d4b754.ngrok.io'; //from ngrok or SSH
+const hostAccess = 'https://ede142c73774.ngrok.io'; //from ngrok or SSH
 const hostNote = 'http://75f3212808d5.ngrok.io/Application/Chatbot/contentNote.html';// Ip Localhost on the domain Chatbot && hostNote
 const styleImg = {
   padding: 5 ,

@@ -1,65 +1,77 @@
-version: "2.0"
-
-intents:
-  - greet
-  - goodbye
-  - bot_challenge
-  - report_month
-  - report_quarter
-  - report_year
-  - report_month_M
-  - report_month_Y
-entities:
- - month
- - month_year
- - quarter
- - quarter_year
- - year
-
-slots:
- month:
-  auto_fill: true
-  type: text
- month_year:
-  auto_fill: true
-  type: text
- quarter:
-  auto_fill: true
-  type: text
- quarter_year:
-  auto_fill: true
-  type: text
- year: 
-  auto_fill: true
-  type: text
-
-responses:
-  utter_ask_year_of_report_month:
-  - text: "Năm bao nhiệu ạ?"
-
-  utter_greet:
-  - text: "A/c muốn xuất báo cáo tháng, quý hay năm ạ?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-actions: 
-  - action_report_month
-  - action_report_quarter
-  - action_report_year
-
+version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- report_month:
+    use_entities: true
+- report_quarter:
+    use_entities: true
+- report_year:
+    use_entities: true
+- report_month_M:
+    use_entities: true
+- report_month_Y:
+    use_entities: true
+entities:
+- month
+- month_year
+- quarter
+- quarter_year
+- year
+slots:
+  month:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  month_year:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  quarter:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  quarter_year:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  year:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_ask_year_of_report_month:
+  - text: Năm bao nhiệu ạ?
+  utter_greet:
+  - text: A/c muốn xuất báo cáo tháng, quý hay năm ạ?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_report_month
+- action_report_quarter
+- action_report_year
+forms: {}
+e2e_actions: []
