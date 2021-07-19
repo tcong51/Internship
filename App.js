@@ -1,12 +1,10 @@
 import * as WebBrowser from 'expo-web-browser';
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef, useState } from 'react';
-import {SafeAreaView, View, Text, Image, Button, Alert, DrawerLayoutAndroid,ScrollView, TouchableOpacity} from 'react-native';
-import { MaterialCommunityIcons, FontAwesomes, MaterialIcons} from '@expo/vector-icons';
-
+import {SafeAreaView, View, Text, Image, Button, Alert, DrawerLayoutAndroid,ScrollView} from 'react-native';
 import RN from 'react-native-rasa';
-const hostAccess = 'https://ede142c73774.ngrok.io'; //from ngrok or SSH
-const hostNote = 'http://75f3212808d5.ngrok.io/Application/Chatbot/contentNote.html';// Ip Localhost on the domain Chatbot && hostNote
+const hostAccess = 'http://474532b659ee.ngrok.io'; //from ngrok or SSH
+const hostNote = 'https://drive.google.com/file/d/1fw0a3Qz2pNi8j2P9_xQssk0t1fqkC6fN/view?usp=sharing';// Ip Localhost on the domain Chatbot && hostNote
 const styleImg = {
   padding: 5 ,
   width:100,
