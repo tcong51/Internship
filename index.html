@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
+   
+
     <meta charset="utf-8">
-    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
+    
     <title>CHATBOT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -149,11 +151,11 @@ margin-top:10px;
   text-align: center;
   color: #62a8ea;
 }
-    </style>
+</style>
 </head>
 <body>
 <div class="container bootstrap snippets bootdeys">
-<div class="col-md-7 col-xs-12 col-md-offset-2">
+*<div class="col-md-7 col-xs-12 col-md-offset-2">
   <!-- Panel Chat -->
   <div class="panel" id="chat">
     <div class="panel-heading">
@@ -185,7 +187,7 @@ margin-top:10px;
         </div>
       <div class="wrapper" >
       <button id="start-record-btn" title="Start Recording" class="btn btn-primary">Start Recognition</button>
-      <button id="pause-record-btn" title="Pause Recording" class="btn btn-primary">Pause Recognition</button>
+      <!-- <button id="pause-record-btn" title="Pause Recording" class="btn btn-primary">Pause Recognition</button> -->
         <p id="recording-instructions" class="card-text">Press the <strong>Start Recognition</strong> button and allow access.</p>
   <!-- <button onclick="playAudio()" type="button" class="btn btn-primary">Play Audio</button> -->
   <!-- <button onclick="pauseAudio()" type="button" class="btn btn-primary">Pause Audio</button> -->
@@ -201,7 +203,6 @@ margin-top:10px;
 <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 <script>
 //  function send() {
-
 //     $.ajax({
 //     url: 'https://10f3a58c779c.ngrok.io/webhooks/rest/webhook',
 //     dataType: 'json',
@@ -218,70 +219,61 @@ margin-top:10px;
 //     error: function( jqXhr, textStatus, errorThrown ){
 //         console.log( errorThrown );
 //     }
-   
-
 // });
-
-// }
-  
-    
+// } 
     function getBotResponse(){
+      
+      
       var rawText = $("#textInput").val();
       var userHtml = '<div class="chat"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."></a></div><div class="chat-body"><div class="chat-body"><div class="chat-content"><p>' + rawText+ "</p></div></div></div></div>";
         $("#textInput").val("");
         $("#chatbot").append(userHtml);
         document
         .getElementById("userInput")
+        // Cuộn phần tử chat
         .scrollIntoView({block : "start",behavior: "smooth"});
+        // jQuery 
         
         $.post("http://localhost:5005/webhooks/rest/webhook", JSON.stringify( { "message": rawText} )).done(function(data){
           $.each (data, function (key, item){
            var hix=  item['text'];
-          
-         
-        
-        var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+rawText+ '</br>' +hix+'</p></div></div></div>';
+        var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+rawText+ '</br></p><a href="'+hix+'">'+hix+'</a>'+'</div></div></div>';
         $('#chatbot').append(botHtml);
         document
         .getElementById("userInput")
         .scrollIntoView({block:"start",behavior: "smooth" });
         });
         });
-        
     }
+    // Khi nhập liệu -> enter ((e.which == 13) xác thực xem có -> enter hay không!) -> gọi API 
     $("#textInput").keypress(function(e) {
       if (e.which == 13) {
         getBotResponse();
       }
     });
+    // Use voice => Create new voice
     try {
       var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       var recognition = new SpeechRecognition();
     }
+    // Ngoại lệ 
     catch(e) {
       console.error(e);
       $('.no-browser-support').show();
       $('.app').hide();
     }
-
     var noteTextarea = $('#textInput');
     var instructions = $('#recording-instructions');
     var voice = 0;
-
     var noteContent = '';
-    var audio = new Audio();
-
-    recognition.continuous=  true;
+    // var audio = new Audio();
+// Voice liên tục
+    // recognition.continuous=  true;
 //Result
     recognition.onresult = function(event) {
-
-
+    // mảng giá trị 
       var current = event.resultIndex;
-
-
       var transcript = event.results[current][0].transcript;
-
-
       var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
       //Voice
       if(!mobileRepeatBug) {
@@ -296,7 +288,7 @@ margin-top:10px;
           
          
         
-        var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+noteContent+ '</br>' +hix+'</p></div></div></div>';
+           var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+noteContent+ '</br></p><a href="'+hix+'">'+hix+'</a>'+'</div></div></div>';
         $('#chatbot').append(botHtml);
         document
         .getElementById("userInput")
@@ -305,41 +297,37 @@ margin-top:10px;
         });
       }
     };
-
+    // Creat new voice and start 
     recognition.onstart = function() {
       instructions.text('Bắt đầu nhận dạng giọng nói');
       voice=1;
     }
-
+    // On nomarl web!
     recognition.onspeechend = function() {
+      recognition.stop()
       instructions.text('Turn off');
       voice=0;
     }
-
+    // Error
     recognition.onerror = function(event) {
       if(event.error == 'no-speech') {
         instructions.text('No speech was detected. Try again.');
       };
     }
 
-
+    // On start 
     $('#start-record-btn').on('click', function(e) {
       recognition.start();
     });
-
-
-    $('#pause-record-btn').on('click', function(e) {
-      recognition.stop();
-      instructions.text('Voice recognition paused.');
-    });
-
-    // Sync the text inside the text area with the noteContent variable.
+    // Click pause
+    // $('#pause-record-btn').on('click', function(e) {
+    //   recognition.stop();
+    //   instructions.text('Voice recognition paused.');
+    // });
+    // 'Sync' the text inside the text area with the noteContent variable.
     noteTextarea.on('input', function() {
       noteContent = $(this).val();
-      
     })
-
-
 </script>
 </body>
 </html>
