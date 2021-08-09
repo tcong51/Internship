@@ -13,7 +13,7 @@
         + rasa run actions
     - Database form report.sql on DataOfBot
 # Docker
-* docker build /actions app
+* docker build ./actions app
 * docker-compose up
 * ngrok http 5005
 
