@@ -237,7 +237,14 @@ margin-top:10px;
         $.post("http://localhost:5005/webhooks/rest/webhook", JSON.stringify( { "message": rawText} )).done(function(data){
           $.each (data, function (key, item){
            var hix=  item['text'];
-        var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+rawText+ '</br></p><a href="'+hix+'">'+hix+'</a>'+'</div></div></div>';
+           var re = /([a-z0-9-]+\:\/+)([^\/\s]+)([a-z0-9\-@\^=%&;\/~\+]*)[\?]?([^ \#\r\n]*)#?([^ \#\r\n]*)/mig;
+            if(matchedResult = hix.match(re)){
+                var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+rawText+ '</br></p><a href="'+hix+'" target="_blank">'+hix+'</a>'+'</div></div></div>';
+            }else
+              {
+              var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+rawText+ '</br>'+hix+'</p></div></div></div>';
+              }
+        // var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+rawText+ '</br></p><a href="'+hix+'">'+hix+'</a>'+'</div></div></div>';
         $('#chatbot').append(botHtml);
         document
         .getElementById("userInput")
@@ -285,10 +292,16 @@ margin-top:10px;
         $.post("http://localhost:5005/webhooks/rest/webhook", JSON.stringify( { "message": note} )).done(function(data){
           $.each (data, function (key, item){
            var hix=  item['text'];
-          
+           var re = /([a-z0-9-]+\:\/+)([^\/\s]+)([a-z0-9\-@\^=%&;\/~\+]*)[\?]?([^ \#\r\n]*)#?([^ \#\r\n]*)/mig;
+            if(matchedResult = hix.match(re)){
+                var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+note+ '</br></p><a href="'+hix+'" target="_blank">'+hix+'</a>'+'</div></div></div>';
+            }else
+              {
+              var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+note+ '</br>'+hix+'</p></div></div></div>';
+              }
          
         
-           var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+noteContent+ '</br></p><a href="'+hix+'">'+hix+'</a>'+'</div></div></div>';
+          //  var botHtml = '<div class="chat chat-left"><div class="chat-avatar"><a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."></a></div><div class="chat-body"><div class="chat-content"><p>'+"Trả lời câu hỏi : "+noteContent+ '</br></p><a href="'+hix+'">'+hix+'</a>'+'</div></div></div>';
         $('#chatbot').append(botHtml);
         document
         .getElementById("userInput")
